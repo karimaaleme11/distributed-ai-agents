@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
 
+import matplotlib
 import matplotlib.cm as cm
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
@@ -192,7 +193,7 @@ class AgentGraphVisualizer:
         else:
             agent_ids = sorted({r["agent_id"] for r in self._task_records})
             y_pos = {aid: i for i, aid in enumerate(agent_ids)}
-            cmap = cm.get_cmap("tab10")
+            cmap = matplotlib.colormaps.get_cmap("tab10")
             state_colors = {
                 TaskState.COMPLETE: "#2ECC71",
                 TaskState.FAILED:   "#E74C3C",
@@ -305,7 +306,7 @@ class AgentGraphVisualizer:
         out_degrees = dict(self._graph.out_degree())
         agents = [self._graph.nodes[n].get("label", n)[:10] for n in out_degrees]
         degrees = list(out_degrees.values())
-        cmap = cm.get_cmap("Blues")
+        cmap = matplotlib.colormaps.get_cmap("Blues")
         bar_colors = [cmap(0.4 + 0.5 * (d / max(degrees, default=1))) for d in degrees]
 
         bars = ax.bar(agents, degrees, color=bar_colors, edgecolor="none")
