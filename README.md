@@ -538,4 +538,3 @@ Subclass or extend `AgentGraphVisualizer`, add a `_render_*` method following th
 
 ---
 
-*Built with [google-antigravity](https://pypi.org/project/google-antigravity/) · [NetworkX](https://networkx.org/) · [Matplotlib](https://matplotlib.org/)*
